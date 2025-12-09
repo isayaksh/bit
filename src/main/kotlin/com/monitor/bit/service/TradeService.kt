@@ -1,44 +1,43 @@
 package com.monitor.bit.service
 
 import com.monitor.bit.domain.Candle
-import com.monitor.bit.dto.CandleDTO
-import com.monitor.bit.repository.CandleRepository
+import com.monitor.bit.domain.Trade
+import com.monitor.bit.dto.TradeDTO
+import com.monitor.bit.repository.TradeRepository
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.reactive.function.client.WebClient
-import java.time.LocalDateTime
-import java.time.OffsetDateTime
-import java.time.format.DateTimeFormatter
-
 
 @Service
 @Transactional(readOnly = true)
-class CandleService(
+class TradeService(
     val webClient: WebClient,
-    val candleRepository: CandleRepository
+    val tradeRepository: TradeRepository
 ) {
 
     @Transactional
-    fun insertCandles() {
+    fun insertTrade() {
         try {
 
-            val candleList = webClient.get()
+            val tradeList = webClient.get()
                 .uri { uriBuilder ->
                     uriBuilder
-                        .path("/v1/candles/seconds")
+                        .path("/v1/trades/ticks")
                         .queryParam("market", "KRW-BTC")
                         .build()
                 }
                 .retrieve()
-                .bodyToFlux(CandleDTO::class.java)
+                .bodyToFlux(TradeDTO::class.java)
                 .map { it.toEntity() }
                 .collectList()
                 .block() ?: emptyList()
 
-            candleRepository.saveAll<Candle>(candleList)
+            tradeRepository.saveAll<Trade>(tradeList)
 
         } catch (e: Exception) {
             e.printStackTrace()
         }
     }
+
+
 }
