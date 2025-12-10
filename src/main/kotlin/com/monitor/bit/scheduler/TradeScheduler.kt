@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class TradeScheduler(
-    val tradeService: TradeService
+    private val tradeService: TradeService
 ) {
 
     @Scheduled(cron = "* * * * * *")

@@ -11,8 +11,8 @@ import kotlin.text.get
 @Service
 @Transactional(readOnly = true)
 class TradingPairService(
-    val webClient: WebClient,
-    val tradingPairRepository: TradingPairRepository
+    private val webClient: WebClient,
+    private val tradingPairRepository: TradingPairRepository
 ) {
     @Transactional
     fun insertTradingPairs() {

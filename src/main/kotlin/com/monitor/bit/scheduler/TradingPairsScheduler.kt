@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient
 
 @Component
 class TradingPairsScheduler(
-    val tradingPairService: TradingPairService
+    private val tradingPairService: TradingPairService
 ) {
 
     @Scheduled(cron = "0 0 0 * * *") // 매일 00시 00분 00초에 실행함.

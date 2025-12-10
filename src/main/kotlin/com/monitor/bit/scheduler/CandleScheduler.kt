@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 
 @Component
 class CandleScheduler(
-    val candleService: CandleService
+    private val candleService: CandleService
 ) {
 
     @Scheduled(cron = "0 * * * * *")

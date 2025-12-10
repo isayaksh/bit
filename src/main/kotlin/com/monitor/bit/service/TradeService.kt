@@ -11,8 +11,8 @@ import org.springframework.web.reactive.function.client.WebClient
 @Service
 @Transactional(readOnly = true)
 class TradeService(
-    val webClient: WebClient,
-    val tradeRepository: TradeRepository
+    private val webClient: WebClient,
+    private val tradeRepository: TradeRepository
 ) {
 
     @Transactional

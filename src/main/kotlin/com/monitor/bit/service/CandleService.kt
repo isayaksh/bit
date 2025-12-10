@@ -14,8 +14,8 @@ import java.time.format.DateTimeFormatter
 @Service
 @Transactional(readOnly = true)
 class CandleService(
-    val webClient: WebClient,
-    val candleRepository: CandleRepository
+    private val webClient: WebClient,
+    private val candleRepository: CandleRepository
 ) {
 
     @Transactional
