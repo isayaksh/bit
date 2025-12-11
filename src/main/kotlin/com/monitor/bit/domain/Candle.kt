@@ -5,11 +5,17 @@ import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
+import jakarta.persistence.Index
 import jakarta.persistence.Table
 import java.time.LocalDateTime
 
 @Entity
-@Table(name = "Candle")
+@Table(
+    name = "Candle",
+    indexes = [
+        Index(name = "idx_candle_market_time", columnList = "market, candle_time_kst")
+    ]
+)
 class Candle(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,7 +42,7 @@ class Candle(
     @Column(name = "trade_price", nullable = false)
     val tradePrice: Double,
 
-    @Column(nullable = false)
+    @Column(name = "timestamp", nullable = false)
     val timestamp: Long,
 
     @Column(name = "acc_trade_price", nullable = false)

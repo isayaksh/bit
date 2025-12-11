@@ -3,7 +3,12 @@ package com.monitor.bit.domain
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "ticker")
+@Table(
+    name = "ticker",
+    indexes = [
+        Index(name = "idx_ticker_market_trade_date_time", columnList = "market, trade_date, trade_time")
+    ]
+)
 class Ticker(
 
     @Id
