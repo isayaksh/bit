@@ -19,10 +19,10 @@ class Trade(
     @Column(nullable = false, length = 20)
     val market: String,
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false,)
     val tradeDateUtc: LocalDateTime,
 
-    @Column(nullable = false, length = 10)
+    @Column(nullable = false)
     val tradeTimeUtc: LocalDateTime,
 
     @Column(nullable = false)
