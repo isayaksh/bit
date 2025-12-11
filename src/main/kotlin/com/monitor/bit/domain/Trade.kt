@@ -6,6 +6,7 @@ import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.*
 import jakarta.persistence.Id
 import jakarta.persistence.Table
+import java.time.LocalDateTime
 
 @Entity
 @Table(name = "trade")
@@ -19,10 +20,10 @@ class Trade(
     val market: String,
 
     @Column(nullable = false, length = 10)
-    val tradeDateUtc: String,
+    val tradeDateUtc: LocalDateTime,
 
     @Column(nullable = false, length = 10)
-    val tradeTimeUtc: String,
+    val tradeTimeUtc: LocalDateTime,
 
     @Column(nullable = false)
     val timestamp: Long,
