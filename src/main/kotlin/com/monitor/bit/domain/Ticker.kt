@@ -1,12 +1,13 @@
 package com.monitor.bit.domain
 
 import jakarta.persistence.*
+import java.time.LocalDateTime
 
 @Entity
 @Table(
     name = "ticker",
     indexes = [
-        Index(name = "idx_ticker_market_trade_date_time", columnList = "market, trade_date, trade_time")
+        Index(name = "idx_ticker_market_trade_date_time", columnList = "market, trade_date_time_kst")
     ]
 )
 class Ticker(
@@ -18,17 +19,11 @@ class Ticker(
     @Column(name = "market", nullable = false)
     val market: String,
 
-    @Column(name = "trade_date", nullable = false)
-    val tradeDate: String,
+    @Column(name = "trade_date_time_utc", nullable = false)
+    val tradeDateTimeUtc: LocalDateTime,
 
-    @Column(name = "trade_time", nullable = false)
-    val tradeTime: String,
-
-    @Column(name = "trade_date_kst", nullable = false)
-    val tradeDateKst: String,
-
-    @Column(name = "trade_time_kst", nullable = false)
-    val tradeTimeKst: String,
+    @Column(name = "trade_date_time_kst", nullable = false)
+    val tradeDateTimeKst: LocalDateTime,
 
     @Column(name = "trade_timestamp", nullable = false)
     val tradeTimestamp: Long,

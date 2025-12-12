@@ -1,6 +1,9 @@
 package com.monitor.bit.dto
 
+import com.monitor.bit.common.DateTimeFormats
 import com.monitor.bit.domain.Ticker
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 data class TickerDTO(
     val market: String,
@@ -30,14 +33,13 @@ data class TickerDTO(
     val lowest_52_week_date: String,
     val timestamp: Long
 ) {
+
     fun toEntity(): Ticker {
         return Ticker(
             id = null,
             market = market,
-            tradeDate = trade_date,
-            tradeTime = trade_time,
-            tradeDateKst = trade_date_kst,
-            tradeTimeKst = trade_time_kst,
+            tradeDateTimeUtc = LocalDateTime.parse(trade_date + trade_time, DateTimeFormats.TRADE_FORMATTER),
+            tradeDateTimeKst = LocalDateTime.parse(trade_date_kst + trade_time_kst, DateTimeFormats.TRADE_FORMATTER),
             tradeTimestamp = trade_timestamp,
             openingPrice = opening_price,
             highPrice = high_price,
