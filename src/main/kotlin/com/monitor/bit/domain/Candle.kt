@@ -24,10 +24,10 @@ class Candle(
     @Column(nullable = false, length = 20)
     val market: String,
 
-    @Column(name = "candle_time_utc", nullable = false)
+    @Column(name = "candle_date_time_utc", nullable = false)
     val candleDateTimeUtc: LocalDateTime,
 
-    @Column(name = "candle_time_kst", nullable = false)
+    @Column(name = "candle_date_time_kst", nullable = false)
     val candleDateTimeKst: LocalDateTime,
 
     @Column(name = "opening_price", nullable = false)
