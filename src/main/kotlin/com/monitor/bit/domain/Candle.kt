@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 @Table(
     name = "Candle",
     indexes = [
-        Index(name = "idx_candle_market_time", columnList = "market, candle_time_kst")
+        Index(name = "idx_candle_market_time", columnList = "market, candle_date_time_utc")
     ]
 )
 class Candle(

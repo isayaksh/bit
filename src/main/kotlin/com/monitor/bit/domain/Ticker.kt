@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Table(
     name = "ticker",
     indexes = [
-        Index(name = "idx_ticker_market_trade_date_time", columnList = "market, trade_date_time_kst")
+        Index(name = "idx_ticker_market_trade_date_time", columnList = "market, trade_date_time_utc")
     ]
 )
 class Ticker(

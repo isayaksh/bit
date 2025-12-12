@@ -32,6 +32,8 @@ class TradeService(
                 .collectList()
                 .block() ?: emptyList()
 
+            println(tradeList)
+
             tradeRepository.saveAll<Trade>(tradeList)
 
         } catch (e: Exception) {

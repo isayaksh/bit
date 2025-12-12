@@ -1,5 +1,6 @@
 package com.monitor.bit.dto
 
+import com.monitor.bit.common.DateTimeFormats
 import com.monitor.bit.domain.Trade
 import java.time.LocalDateTime
 
@@ -19,8 +20,7 @@ data class TradeDTO(
     fun toEntity(): Trade {
         return Trade(
             market = this.market,
-            tradeDateUtc = LocalDateTime.parse(this.trade_date_utc),
-            tradeTimeUtc = LocalDateTime.parse(this.trade_time_utc),
+            tradeDateTimeUtc = LocalDateTime.parse("$trade_date_utc $trade_time_utc", DateTimeFormats.TRADE_FORMATTER),
             timestamp = this.timestamp,
             tradePrice = this.trade_price,
             tradeVolume = this.trade_volume,

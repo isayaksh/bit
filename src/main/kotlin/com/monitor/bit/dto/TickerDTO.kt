@@ -38,8 +38,8 @@ data class TickerDTO(
         return Ticker(
             id = null,
             market = market,
-            tradeDateTimeUtc = LocalDateTime.parse(trade_date + trade_time, DateTimeFormats.TRADE_FORMATTER),
-            tradeDateTimeKst = LocalDateTime.parse(trade_date_kst + trade_time_kst, DateTimeFormats.TRADE_FORMATTER),
+            tradeDateTimeUtc = LocalDateTime.parse(trade_date + trade_time, DateTimeFormats.TICKER_FORMATTER),
+            tradeDateTimeKst = LocalDateTime.parse(trade_date_kst + trade_time_kst, DateTimeFormats.TICKER_FORMATTER),
             tradeTimestamp = trade_timestamp,
             openingPrice = opening_price,
             highPrice = high_price,

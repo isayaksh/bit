@@ -13,7 +13,7 @@ import java.time.LocalDateTime
 @Table(
     name = "trade",
     indexes = [
-        Index(name = "idx_trade_market_trade_date_time", columnList = "market, trade_date_utc, trade_time_utc")
+        Index(name = "idx_trade_market_trade_date_time", columnList = "market, trade_date_time_utc")
     ]
 )
 class Trade(
@@ -25,11 +25,8 @@ class Trade(
     @Column(name = "market", nullable = false, length = 20)
     val market: String,
 
-    @Column(name = "trade_date_utc", nullable = false)
-    val tradeDateUtc: LocalDateTime,
-
-    @Column(name = "trade_time_utc", nullable = false)
-    val tradeTimeUtc: LocalDateTime,
+    @Column(name = "trade_date_time_utc", nullable = false)
+    val tradeDateTimeUtc: LocalDateTime,
 
     @Column(name = "timestamp", nullable = false)
     val timestamp: Long,
@@ -51,4 +48,10 @@ class Trade(
 
     @Column(name = "sequential_id", nullable = false)
     val sequentialId: Long
-)
+
+
+) {
+    override fun toString(): String {
+        return "Trade(id=$id, market='$market', tradeDateTimeUtc=$tradeDateTimeUtc, timestamp=$timestamp, tradePrice=$tradePrice, tradeVolume=$tradeVolume, prevClosingPrice=$prevClosingPrice, changePrice=$changePrice, askBid='$askBid', sequentialId=$sequentialId)"
+    }
+}
