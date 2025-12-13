@@ -49,5 +49,4 @@ class Trade(
     @Column(name = "sequential_id", nullable = false)
     val sequentialId: Long
 
-
 )

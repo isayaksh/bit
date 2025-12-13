@@ -30,12 +30,4 @@ class TradingPair(
     @Column(name = "english_name", nullable = false, length = 100)
     var englishName: String
 
-) {
-    // JPA가 사용할 기본 생성자(파라미터 없는 생성자)는 꼭 필요 → protected로 감추는 것이 정석
-    protected constructor() : this(
-        id = null,
-        market = "",
-        koreanName = "",
-        englishName = ""
-    )
-}
+)

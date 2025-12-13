@@ -50,18 +50,4 @@ class Candle(
 
     @Column(name = "acc_trade_volume", nullable = false)
     val candleAccTradeVolume: Double
-) {
-    protected constructor() : this(
-        id = null,
-        market = "",
-        candleDateTimeUtc = LocalDateTime.now(),
-        candleDateTimeKst = LocalDateTime.now(),
-        openingPrice = 0.0,
-        highPrice = 0.0,
-        lowPrice = 0.0,
-        tradePrice = 0.0,
-        timestamp = 0L,
-        candleAccTradePrice = 0.0,
-        candleAccTradeVolume = 0.0
-    )
-}
+)
