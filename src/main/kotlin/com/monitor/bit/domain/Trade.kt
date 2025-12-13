@@ -50,8 +50,4 @@ class Trade(
     val sequentialId: Long
 
 
-) {
-    override fun toString(): String {
-        return "Trade(id=$id, market='$market', tradeDateTimeUtc=$tradeDateTimeUtc, timestamp=$timestamp, tradePrice=$tradePrice, tradeVolume=$tradeVolume, prevClosingPrice=$prevClosingPrice, changePrice=$changePrice, askBid='$askBid', sequentialId=$sequentialId)"
-    }
-}
+)
