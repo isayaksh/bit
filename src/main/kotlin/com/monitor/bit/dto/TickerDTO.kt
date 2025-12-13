@@ -3,7 +3,6 @@ package com.monitor.bit.dto
 import com.monitor.bit.common.DateTimeFormats
 import com.monitor.bit.domain.Ticker
 import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 data class TickerDTO(
     val market: String,
@@ -35,8 +34,7 @@ data class TickerDTO(
 ) {
 
     fun toEntity(): Ticker {
-        return Ticker(
-            id = null,
+        return Ticker.create(
             market = market,
             tradeDateTimeUtc = LocalDateTime.parse(trade_date + trade_time, DateTimeFormats.TICKER_FORMATTER),
             tradeDateTimeKst = LocalDateTime.parse(trade_date_kst + trade_time_kst, DateTimeFormats.TICKER_FORMATTER),

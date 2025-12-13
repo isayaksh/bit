@@ -1,52 +1,84 @@
 package com.monitor.bit.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType.*
-import jakarta.persistence.Id
-import jakarta.persistence.Index
-import jakarta.persistence.Table
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
 @Table(
     name = "trade",
     indexes = [
-        Index(name = "idx_trade_market_trade_date_time", columnList = "market, trade_date_time_utc")
+        Index(
+            name = "idx_trade_market_trade_date_time",
+            columnList = "market, trade_date_time_utc"
+        )
     ]
 )
-class Trade(
+class Trade protected constructor() {
 
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    val id: Long? = null,
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null
+        protected set
 
     @Column(name = "market", nullable = false, length = 20)
-    val market: String,
+    lateinit var market: String
+        protected set
 
     @Column(name = "trade_date_time_utc", nullable = false)
-    val tradeDateTimeUtc: LocalDateTime,
+    lateinit var tradeDateTimeUtc: LocalDateTime
+        protected set
 
     @Column(name = "timestamp", nullable = false)
-    val timestamp: Long,
+    var timestamp: Long = 0
+        protected set
 
     @Column(name = "trade_price", nullable = false)
-    val tradePrice: Double,
+    var tradePrice: Double = 0.0
+        protected set
 
     @Column(name = "trade_volume", nullable = false)
-    val tradeVolume: Double,
+    var tradeVolume: Double = 0.0
+        protected set
 
     @Column(name = "pre_closing_price", nullable = false)
-    val prevClosingPrice: Double,
+    var prevClosingPrice: Double = 0.0
+        protected set
 
     @Column(name = "change_price", nullable = false)
-    val changePrice: Double,
+    var changePrice: Double = 0.0
+        protected set
 
     @Column(name = "ask_bid", nullable = false, length = 3)
-    val askBid: String,
+    lateinit var askBid: String
+        protected set
 
     @Column(name = "sequential_id", nullable = false)
-    val sequentialId: Long
+    var sequentialId: Long = 0
+        protected set
 
-)
+    companion object {
+        fun create(
+            market: String,
+            tradeDateTimeUtc: LocalDateTime,
+            timestamp: Long,
+            tradePrice: Double,
+            tradeVolume: Double,
+            prevClosingPrice: Double,
+            changePrice: Double,
+            askBid: String,
+            sequentialId: Long
+        ): Trade {
+            val t = Trade()
+            t.market = market
+            t.tradeDateTimeUtc = tradeDateTimeUtc
+            t.timestamp = timestamp
+            t.tradePrice = tradePrice
+            t.tradeVolume = tradeVolume
+            t.prevClosingPrice = prevClosingPrice
+            t.changePrice = changePrice
+            t.askBid = askBid
+            t.sequentialId = sequentialId
+            return t
+        }
+    }
+}

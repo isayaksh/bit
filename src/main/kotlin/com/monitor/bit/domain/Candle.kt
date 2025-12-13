@@ -11,43 +11,83 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(
-    name = "Candle",
+    name = "candle",
     indexes = [
         Index(name = "idx_candle_market_time", columnList = "market, candle_date_time_utc")
     ]
 )
-class Candle(
+class Candle protected constructor() {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,
+    var id: Long? = null
+        protected set
 
     @Column(nullable = false, length = 20)
-    val market: String,
+    lateinit var market: String
+        protected set
 
     @Column(name = "candle_date_time_utc", nullable = false)
-    val candleDateTimeUtc: LocalDateTime,
+    lateinit var candleDateTimeUtc: LocalDateTime
+        protected set
 
     @Column(name = "candle_date_time_kst", nullable = false)
-    val candleDateTimeKst: LocalDateTime,
+    lateinit var candleDateTimeKst: LocalDateTime
+        protected set
 
     @Column(name = "opening_price", nullable = false)
-    val openingPrice: Double,
+    var openingPrice: Double = 0.0
+        protected set
 
     @Column(name = "high_price", nullable = false)
-    val highPrice: Double,
+    var highPrice: Double = 0.0
+        protected set
 
     @Column(name = "low_price", nullable = false)
-    val lowPrice: Double,
+    var lowPrice: Double = 0.0
+        protected set
 
     @Column(name = "trade_price", nullable = false)
-    val tradePrice: Double,
+    var tradePrice: Double = 0.0
+        protected set
 
     @Column(name = "timestamp", nullable = false)
-    val timestamp: Long,
+    var timestamp: Long = 0
+        protected set
 
     @Column(name = "acc_trade_price", nullable = false)
-    val candleAccTradePrice: Double,
+    var candleAccTradePrice: Double = 0.0
+        protected set
 
     @Column(name = "acc_trade_volume", nullable = false)
-    val candleAccTradeVolume: Double
-)
+    var candleAccTradeVolume: Double = 0.0
+        protected set
+
+    companion object {
+        fun create(
+            market: String,
+            candleDateTimeUtc: LocalDateTime,
+            candleDateTimeKst: LocalDateTime,
+            openingPrice: Double,
+            highPrice: Double,
+            lowPrice: Double,
+            tradePrice: Double,
+            timestamp: Long,
+            candleAccTradePrice: Double,
+            candleAccTradeVolume: Double
+        ): Candle {
+            val c = Candle()
+            c.market = market
+            c.candleDateTimeUtc = candleDateTimeUtc
+            c.candleDateTimeKst = candleDateTimeKst
+            c.openingPrice = openingPrice
+            c.highPrice = highPrice
+            c.lowPrice = lowPrice
+            c.tradePrice = tradePrice
+            c.timestamp = timestamp
+            c.candleAccTradePrice = candleAccTradePrice
+            c.candleAccTradeVolume = candleAccTradeVolume
+            return c
+        }
+    }
+}

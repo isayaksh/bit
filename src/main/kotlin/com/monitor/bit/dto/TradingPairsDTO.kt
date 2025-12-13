@@ -8,7 +8,7 @@ data class TradingPairsDTO(
     val english_name: String
 ) {
     fun toEntity(): TradingPair {
-        return TradingPair(
+        return TradingPair.create(
             market = market,
             koreanName = korean_name,
             englishName = english_name

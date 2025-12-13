@@ -1,12 +1,6 @@
 package com.monitor.bit.domain
 
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
-import jakarta.persistence.Index
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
 @Table(
@@ -15,19 +9,36 @@ import jakarta.persistence.Table
         Index(name = "idx_trading_pair_market", columnList = "market")
     ]
 )
-class TradingPair(
+class TradingPair protected constructor() {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long? = null,   // PK는 nullable로 둬야 Hibernate가 insert할 때 auto-increment 가능
+    var id: Long? = null
+        protected set
 
     @Column(name = "market", nullable = false, length = 50)
-    var market: String,
+    lateinit var market: String
+        protected set
 
     @Column(name = "korean_name", nullable = false, length = 100)
-    var koreanName: String,
+    lateinit var koreanName: String
+        protected set
 
     @Column(name = "english_name", nullable = false, length = 100)
-    var englishName: String
+    lateinit var englishName: String
+        protected set
 
-)
+    companion object {
+        fun create(
+            market: String,
+            koreanName: String,
+            englishName: String
+        ): TradingPair {
+            val p = TradingPair()
+            p.market = market
+            p.koreanName = koreanName
+            p.englishName = englishName
+            return p
+        }
+    }
+}

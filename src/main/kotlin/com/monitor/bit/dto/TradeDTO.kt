@@ -18,7 +18,7 @@ data class TradeDTO(
     val sequential_id: Long
 ) {
     fun toEntity(): Trade {
-        return Trade(
+        return Trade.create(
             market = this.market,
             tradeDateTimeUtc = LocalDateTime.parse("$trade_date_utc $trade_time_utc", DateTimeFormats.TRADE_FORMATTER),
             timestamp = this.timestamp,

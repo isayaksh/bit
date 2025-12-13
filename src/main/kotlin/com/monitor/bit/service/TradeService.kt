@@ -1,6 +1,5 @@
 package com.monitor.bit.service
 
-import com.monitor.bit.domain.Candle
 import com.monitor.bit.domain.Trade
 import com.monitor.bit.dto.TradeDTO
 import com.monitor.bit.repository.TradeRepository
