@@ -90,4 +90,9 @@ class Candle protected constructor() {
             return c
         }
     }
+
+    override fun toString(): String {
+        return "Candle(id=$id, market='$market', candleDateTimeUtc=$candleDateTimeUtc, candleDateTimeKst=$candleDateTimeKst, openingPrice=$openingPrice, highPrice=$highPrice, lowPrice=$lowPrice, tradePrice=$tradePrice, timestamp=$timestamp, candleAccTradePrice=$candleAccTradePrice, candleAccTradeVolume=$candleAccTradeVolume)"
+    }
+
 }

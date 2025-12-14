@@ -13,7 +13,8 @@ data class CandleDTO(
     val trade_price: Double,
     val timestamp: Long,
     val candle_acc_trade_price: Double,
-    val candle_acc_trade_volume: Double
+    val candle_acc_trade_volume: Double,
+    val unit: Long
 ) {
     fun toEntity(): Candle {
         return Candle.create(
