@@ -9,7 +9,7 @@ class TickerScheduler(
     private val tickerService: TickerService
 ) {
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     fun insertTickers() {
         tickerService.insertTicker()
     }

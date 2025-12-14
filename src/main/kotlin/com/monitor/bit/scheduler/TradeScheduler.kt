@@ -9,7 +9,7 @@ class TradeScheduler(
     private val tradeService: TradeService
 ) {
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     fun insertTrades() {
         tradeService.insertTrade()
     }
