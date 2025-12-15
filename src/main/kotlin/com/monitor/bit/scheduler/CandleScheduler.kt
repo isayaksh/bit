@@ -9,7 +9,7 @@ class CandleScheduler(
     private val candleService: CandleService
 ) {
 
-    @Scheduled(cron = "* * * * * *")
+    @Scheduled(cron = "0 * * * * *")
     fun insertCandles() {
         candleService.insertCandles();
     }
