@@ -5,7 +5,7 @@ import org.springframework.batch.infrastructure.item.ItemReader
 import org.springframework.stereotype.Component
 
 @Component
-class TickerReader(
+class TickerItemReader(
     private val tradingPairRepository: TradingPairRepository
 ): ItemReader<List<String>> {
 

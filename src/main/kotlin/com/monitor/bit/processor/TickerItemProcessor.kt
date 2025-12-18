@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.client.WebClient
 
 @Component
-class TickerProcessor(
+class TickerItemProcessor(
     private val webClient: WebClient
 ) : ItemProcessor<List<String>, List<Ticker>> {
 

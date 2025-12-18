@@ -7,7 +7,7 @@ import org.springframework.batch.infrastructure.item.ItemWriter
 import org.springframework.stereotype.Component
 
 @Component
-class TickerWriter(
+class TickerItemWriter(
     private val tickerRepository: TickerRepository
 ) : ItemWriter<List<Ticker>> {
 
