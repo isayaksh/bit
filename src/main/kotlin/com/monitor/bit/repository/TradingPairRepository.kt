@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository
 interface TradingPairRepository: JpaRepository<TradingPair, Long> {
 
     @Query("select t.market from TradingPair t")
-    fun findMarketOnly(pageable: Pageable): List<String>
+    fun findAllMarketOnly(pageable: Pageable): List<String>
 
 }
